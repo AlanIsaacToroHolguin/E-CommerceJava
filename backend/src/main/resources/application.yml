@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: java-ecommerce
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:ecommerce_db}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: false
+    open-in-view: false
+
+server:
+  port: ${SERVER_PORT:8080}
+  servlet:
+    context-path: /api
+
+app:
+  security:
+    jwt:
+      secret: ${JWT_SECRET:ZmQ0ZGI5NjQ0MDQwY2I4MjMxY2Y3ZmI3MjdhN2ZmMjNhODdiMmIyYzBlNDg2OWRkNTdiMjVmOWY0M2E1NmJjMQ==}
+      access-token-expiration-ms: 900000
+      refresh-token-expiration-ms: 604800000
+  cors:
+    allowed-origins: ${CORS_ORIGINS:http://localhost:5173}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+  api-docs:
+    path: /v3/api-docs
+
+logging:
+  level:
+    org.springframework.security: INFO
+    com.javaecommerce: DEBUG

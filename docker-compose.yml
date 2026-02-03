@@ -1,0 +1,45 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: ecommerce-postgres
+    environment:
+      POSTGRES_DB: ${DB_NAME:-ecommerce_db}
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-postgres}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  backend:
+    build: ./backend
+    container_name: ecommerce-backend
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: ${DB_NAME:-ecommerce_db}
+      DB_USER: ${DB_USER:-postgres}
+      DB_PASSWORD: ${DB_PASSWORD:-postgres}
+      JWT_SECRET: ${JWT_SECRET:-ZmQ0ZGI5NjQ0MDQwY2I4MjMxY2Y3ZmI3MjdhN2ZmMjNhODdiMmIyYzBlNDg2OWRkNTdiMjVmOWY0M2E1NmJjMQ==}
+      CORS_ORIGINS: http://localhost,http://localhost:5173
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build: ./frontend
+    container_name: ecommerce-frontend
+    depends_on:
+      - backend
+    ports:
+      - "5173:80"
+
+volumes:
+  pg_data:
