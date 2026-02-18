@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root { height: 100%; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #050505;
+  color: #e5e5e5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-display {
+  font-family: 'Bebas Neue', Inter, sans-serif;
+  letter-spacing: 0.03em;
+}
+
+/* Subtle scanline + grain texture for that metal/rock vibe */
+.bg-noise {
+  background-image:
+    radial-gradient(rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 3px 3px;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: #262626; border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: #e30613; }
+
+/* Selection */
+::selection { background: #e30613; color: white; }
+
+/* Sharp focus rings */
+*:focus-visible {
+  outline: 2px solid #e30613;
+  outline-offset: 2px;
+}
+
+/* Diagonal hatched accent (used in dividers / login) */
+.hatched {
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(227,6,19,0.15),
+    rgba(227,6,19,0.15) 2px,
+    transparent 2px,
+    transparent 8px
+  );
+}
