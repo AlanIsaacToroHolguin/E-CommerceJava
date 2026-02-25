@@ -45,7 +45,7 @@ export default function ShopPage() {
         className="relative h-[480px] bg-cover bg-center"
         style={{
           backgroundImage:
-            'url(https://images.unsplash.com/photo-1519160558534-579f5106e43f?auto=format&fit=crop&w=1900&q=80)'
+            'url(https://images.unsplash.com/photo-1556449895-a33c9dba33dd?auto=format&fit=crop&w=1900&q=85)'
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-ink-950 via-ink-950/90 to-ink-950/30" />

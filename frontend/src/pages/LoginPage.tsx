@@ -45,7 +45,7 @@ export default function LoginPage() {
         className="relative hidden flex-1 bg-cover bg-center lg:block"
         style={{
           backgroundImage:
-            'url(https://images.unsplash.com/photo-1519160558534-579f5106e43f?auto=format&fit=crop&w=1600&q=80)'
+            'url(https://images.unsplash.com/photo-1525201548942-d8732f6617a0?auto=format&fit=crop&w=1600&q=85)'
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-ink-950 via-ink-950/80 to-blood-900/40" />
