@@ -23,11 +23,19 @@ public class ProductService {
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
 
+    private static final BigDecimal MAX_PRICE = new BigDecimal("999999999");
+
     @Transactional(readOnly = true)
     public PageResponse<ProductResponse> search(String name, Long categoryId,
                                                 BigDecimal minPrice, BigDecimal maxPrice,
                                                 Pageable pageable) {
-        Page<Product> page = productRepository.search(name, categoryId, minPrice, maxPrice, pageable);
+        Page<Product> page = productRepository.search(
+                name == null ? "" : name,
+                categoryId == null ? 0L : categoryId,
+                minPrice == null ? BigDecimal.ZERO : minPrice,
+                maxPrice == null ? MAX_PRICE : maxPrice,
+                pageable
+        );
         return PageResponse.from(page, ProductResponse::from);
     }
 
