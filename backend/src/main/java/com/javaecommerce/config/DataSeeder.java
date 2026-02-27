@@ -23,18 +23,26 @@ public class DataSeeder implements CommandLineRunner {
     private final ProductRepository productRepository;
     private final PasswordEncoder passwordEncoder;
 
-    private static final String IMG_STRAT_1   = "https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?auto=format&fit=crop&w=900&q=80";
-    private static final String IMG_STRAT_2   = "https://images.unsplash.com/photo-1556449895-a33c9dba33dd?auto=format&fit=crop&w=900&q=80";
-    private static final String IMG_STRAT_3   = "https://images.unsplash.com/photo-1519160558534-579f5106e43f?auto=format&fit=crop&w=900&q=80";
-    private static final String IMG_LP_1      = "https://images.unsplash.com/photo-1525201548942-d8732f6617a0?auto=format&fit=crop&w=900&q=80";
-    private static final String IMG_LP_2      = "https://images.unsplash.com/photo-1605020420620-20c943cc4669?auto=format&fit=crop&w=900&q=80";
-    private static final String IMG_TELE_1    = "https://images.unsplash.com/photo-1550985616-10810253b84d?auto=format&fit=crop&w=900&q=80";
-    private static final String IMG_TELE_2    = "https://images.unsplash.com/photo-1571974599782-87624638275a?auto=format&fit=crop&w=900&q=80";
-    private static final String IMG_SG_1      = "https://images.unsplash.com/photo-1601412436009-d964bd02edbc?auto=format&fit=crop&w=900&q=80";
-    private static final String IMG_SG_2      = "https://images.unsplash.com/photo-1535083252457-6395c7081320?auto=format&fit=crop&w=900&q=80";
-    private static final String IMG_SUPER_1   = "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80";
-    private static final String IMG_SUPER_2   = "https://images.unsplash.com/photo-1556379118-7034d926d258?auto=format&fit=crop&w=900&q=80";
-    private static final String IMG_SUPER_3   = "https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?auto=format&fit=crop&w=900&q=80";
+    // Local images served by the frontend from /frontend/public/guitars/<file>
+    private static final String IMG_FENDER_PRO_STRAT  = "/guitars/fender-american-pro-ii-strat.png";
+    private static final String IMG_FENDER_HSS        = "/guitars/fender-player-strat-hss.png";
+    private static final String IMG_SQUIER_50S        = "/guitars/squier-classic-vibe-50s-strat.png";
+    private static final String IMG_GIBSON_LP         = "/guitars/gibson-les-paul-standard-60s.png";
+    private static final String IMG_EPIPHONE_LP       = "/guitars/epiphone-les-paul-standard-50s.png";
+    private static final String IMG_FENDER_PRO_TELE   = "/guitars/fender-american-pro-ii-tele.png";
+    private static final String IMG_FENDER_PLAYER_TELE = "/guitars/fender-player-tele.png";
+    private static final String IMG_GIBSON_SG         = "/guitars/gibson-sg-standard.png";
+    private static final String IMG_EPIPHONE_SG       = "/guitars/epiphone-sg-special.png";
+    private static final String IMG_IBANEZ_RG550      = "/guitars/ibanez-rg550-genesis.png";
+    private static final String IMG_JACKSON_SOLOIST   = "/guitars/jackson-pro-plus-soloist.png";
+    private static final String IMG_ESP_M1000         = "/guitars/esp-ltd-m1000-evertune.png";
+
+    // Category covers reuse one product photo from each series
+    private static final String CAT_STRAT       = IMG_FENDER_PRO_STRAT;
+    private static final String CAT_LES_PAUL    = IMG_GIBSON_LP;
+    private static final String CAT_TELECASTER  = IMG_FENDER_PRO_TELE;
+    private static final String CAT_SG          = IMG_GIBSON_SG;
+    private static final String CAT_SUPERSTRAT  = IMG_JACKSON_SOLOIST;
 
     @Override
     public void run(String... args) {
@@ -78,72 +86,72 @@ public class DataSeeder implements CommandLineRunner {
     private void seedCatalog() {
         Category strat = upsertCategory("Stratocaster",
                 "Double-cutaway, three single-coil pickups, classic bright tone.",
-                IMG_STRAT_1);
+                CAT_STRAT);
         Category lp = upsertCategory("Les Paul",
                 "Single-cutaway, mahogany body, dual humbuckers, thick warm tone.",
-                IMG_LP_1);
+                CAT_LES_PAUL);
         Category tele = upsertCategory("Telecaster",
                 "Solid body, twangy and articulate, country and rock staple.",
-                IMG_TELE_1);
+                CAT_TELECASTER);
         Category sg = upsertCategory("SG",
                 "Lightweight mahogany body, double cutaway, aggressive humbucker tone.",
-                IMG_SG_1);
+                CAT_SG);
         Category superstrat = upsertCategory("Superstrat",
                 "High-output pickups, fast necks, built for shred and modern metal.",
-                IMG_SUPER_1);
+                CAT_SUPERSTRAT);
 
         productRepository.saveAll(List.of(
                 guitar("Fender American Professional II Stratocaster", "Fender", "0113900706", strat,
                         new BigDecimal("1899.00"), 8, "Olympic White", "Alder", "Maple", "Rosewood", "SSS",
-                        IMG_STRAT_3,
+                        IMG_FENDER_PRO_STRAT,
                         "Workhorse Strat with V-Mod II single-coils, Deep C neck and rolled fingerboard edges."),
                 guitar("Fender Player Stratocaster HSS", "Fender", "0144523506", strat,
                         new BigDecimal("899.00"), 15, "3-Color Sunburst", "Alder", "Maple", "Pau Ferro", "HSS",
-                        IMG_STRAT_2,
+                        IMG_FENDER_HSS,
                         "Modern Player series HSS with Player Series Alnico V pickups and 2-point tremolo."),
                 guitar("Squier Classic Vibe '50s Stratocaster", "Squier", "0374005506", strat,
                         new BigDecimal("499.00"), 25, "2-Color Sunburst", "Pine", "Maple", "Maple", "SSS",
-                        IMG_STRAT_1,
+                        IMG_SQUIER_50S,
                         "Vintage-style Strat with Fender-designed alnico pickups and slim '50s C neck."),
 
                 guitar("Gibson Les Paul Standard '60s", "Gibson", "LPS600HCNH1", lp,
                         new BigDecimal("2799.00"), 6, "Bourbon Burst", "Mahogany w/ Maple top", "Mahogany", "Rosewood", "HH",
-                        IMG_LP_1,
+                        IMG_GIBSON_LP,
                         "Classic '60s Burstbucker 61R/61T pickups, SlimTaper neck, AAA flame maple top."),
                 guitar("Epiphone Les Paul Standard '50s", "Epiphone", "EILS5HSNH1", lp,
                         new BigDecimal("699.00"), 18, "Heritage Cherry Sunburst", "Mahogany w/ Maple top", "Mahogany", "Indian Laurel", "HH",
-                        IMG_LP_2,
+                        IMG_EPIPHONE_LP,
                         "Affordable Les Paul with ProBucker pickups, '50s rounded neck and CTS pots."),
 
                 guitar("Fender American Pro II Telecaster", "Fender", "0113942700", tele,
                         new BigDecimal("1799.00"), 7, "Butterscotch Blonde", "Ash", "Maple", "Maple", "SS",
-                        IMG_TELE_1,
+                        IMG_FENDER_PRO_TELE,
                         "V-Mod II single-coils, treble-bleed circuit and compound-radius fingerboard."),
                 guitar("Fender Player Telecaster", "Fender", "0145212500", tele,
                         new BigDecimal("849.00"), 14, "Black", "Alder", "Maple", "Maple", "SS",
-                        IMG_TELE_2,
+                        IMG_FENDER_PLAYER_TELE,
                         "Solid alder body, Player Alnico V Tele pickups, modern C neck profile."),
 
                 guitar("Gibson SG Standard", "Gibson", "SGS00HCCH1", sg,
                         new BigDecimal("1799.00"), 5, "Heritage Cherry", "Mahogany", "Mahogany", "Rosewood", "HH",
-                        IMG_SG_1,
+                        IMG_GIBSON_SG,
                         "Lightweight mahogany SG with 490R/490T humbuckers and rounded neck profile."),
                 guitar("Epiphone SG Special", "Epiphone", "EGS1VECH1", sg,
                         new BigDecimal("349.00"), 22, "Vintage Cherry", "Mahogany", "Mahogany", "Indian Laurel", "HH",
-                        IMG_SG_2,
+                        IMG_EPIPHONE_SG,
                         "Entry SG with Epiphone Ceramic Pro humbuckers, lightweight body and SlimTaper D neck."),
 
                 guitar("Ibanez RG550 Genesis Collection", "Ibanez", "RG550DY", superstrat,
                         new BigDecimal("1199.00"), 9, "Desert Sun Yellow", "Basswood", "Maple", "Maple", "HSH",
-                        IMG_SUPER_3,
+                        IMG_IBANEZ_RG550,
                         "Genesis reissue: Wizard neck, V7/S1/V8 pickups and Edge tremolo bridge."),
                 guitar("Jackson Pro Plus Soloist SLA3", "Jackson", "2914327503", superstrat,
                         new BigDecimal("1499.00"), 5, "Deep Black Satin", "Mahogany", "Maple", "Ebony", "HH",
-                        IMG_SUPER_1,
+                        IMG_JACKSON_SOLOIST,
                         "Through-body neck, Seymour Duncan JB/Jazz, Floyd Rose 1500 Series tremolo."),
                 guitar("ESP LTD M-1000 Evertune", "ESP", "LM1000ETHTM", superstrat,
                         new BigDecimal("1399.00"), 4, "Charcoal Metallic Satin", "Mahogany", "Maple", "Macassar Ebony", "HH",
-                        IMG_SUPER_2,
+                        IMG_ESP_M1000,
                         "Evertune bridge, Fishman Fluence Modern pickups, perfect tuning under any tension.")
         ));
         log.info("Seeded {} categories and {} guitars", categoryRepository.count(), productRepository.count());
