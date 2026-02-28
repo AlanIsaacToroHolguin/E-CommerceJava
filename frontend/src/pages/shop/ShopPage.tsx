@@ -140,11 +140,11 @@ export default function ShopPage() {
                 to={`/shop/products/${p.id}`}
                 className="group relative flex flex-col border border-ink-700 bg-ink-900 transition hover:border-blood-500"
               >
-                <div className="relative h-64 overflow-hidden bg-ink-800">
+                <div className="relative flex h-64 items-center justify-center overflow-hidden bg-ink-800 p-4">
                   <ProductImage
                     src={p.imageUrl}
                     alt={p.name}
-                    className="h-full w-full object-cover opacity-90 transition duration-300 group-hover:scale-105 group-hover:opacity-100"
+                    className="max-h-full max-w-full object-contain opacity-95 transition duration-300 group-hover:scale-105"
                   />
                   <div className="absolute left-3 top-3 border border-blood-500/40 bg-ink-950/80 px-2 py-1 text-[9px] font-semibold uppercase tracking-widest text-blood-400">
                     {p.categoryName}

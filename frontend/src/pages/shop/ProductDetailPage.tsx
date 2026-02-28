@@ -60,8 +60,8 @@ export default function ProductDetailPage() {
       </Link>
 
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
-        <div className="border border-ink-700 bg-ink-900">
-          <ProductImage src={product.imageUrl} alt={product.name} className="h-[600px] w-full object-cover" />
+        <div className="flex aspect-square items-center justify-center border border-ink-700 bg-ink-900 p-8">
+          <ProductImage src={product.imageUrl} alt={product.name} className="max-h-full max-w-full object-contain" />
         </div>
 
         <div>

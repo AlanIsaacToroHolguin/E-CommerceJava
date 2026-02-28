@@ -13,17 +13,22 @@ export default function CustomerLayout() {
   const navigate = useNavigate();
   const [cartCount, setCartCount] = useState(0);
 
-  const refresh = () => cartApi.get().then((c) => setCartCount(c.itemCount)).catch(() => {});
+  const isAuthed = !!user;
   useEffect(() => {
+    if (!isAuthed) {
+      setCartCount(0);
+      return;
+    }
+    const refresh = () => cartApi.get().then((c) => setCartCount(c.itemCount)).catch(() => {});
     refresh();
-    const id = setInterval(refresh, 5000);
+    const id = setInterval(refresh, 10000);
     const handler = () => refresh();
     window.addEventListener('cart-updated', handler);
     return () => {
       clearInterval(id);
       window.removeEventListener('cart-updated', handler);
     };
-  }, []);
+  }, [isAuthed]);
 
   return (
     <div className="min-h-screen bg-ink-950 text-neutral-200">
@@ -66,20 +71,29 @@ export default function CustomerLayout() {
                 </span>
               )}
             </Link>
-            <div className="hidden text-right md:block">
-              <div className="text-[11px] font-semibold uppercase tracking-widest text-white">
-                {user?.firstName}
+            {isAuthed ? (
+              <div className="hidden text-right md:block">
+                <div className="text-[11px] font-semibold uppercase tracking-widest text-white">
+                  {user?.firstName}
+                </div>
+                <button
+                  onClick={() => {
+                    logout();
+                    navigate('/login');
+                  }}
+                  className="text-[10px] uppercase tracking-widest text-ink-400 hover:text-blood-500"
+                >
+                  Sign out
+                </button>
               </div>
-              <button
-                onClick={() => {
-                  logout();
-                  navigate('/login');
-                }}
-                className="text-[10px] uppercase tracking-widest text-ink-400 hover:text-blood-500"
+            ) : (
+              <Link
+                to="/login"
+                className="hidden bg-blood-500 px-4 py-2 text-[11px] font-bold uppercase tracking-widest text-white transition hover:bg-blood-600 md:inline-block"
               >
-                Sign out
-              </button>
-            </div>
+                Sign in
+              </Link>
+            )}
           </div>
         </div>
       </header>
