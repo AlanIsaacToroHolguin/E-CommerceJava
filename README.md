@@ -350,8 +350,10 @@ curl "http://localhost:8080/api/products?name=strat&page=0&size=5"
 
 ## 📜 License
 
-MIT — feel free to use this project as a portfolio reference.
+Released under the [MIT License](LICENSE). You are free to study, fork and adapt the code — attribution is appreciated.
 
 ## 👤 Author
 
-Alan Toro — built to demonstrate full-stack Java + OOP + Spring Boot proficiency.
+**Alan Toro** — built as a portfolio piece to demonstrate full-stack Java + OOP + Spring Boot proficiency, paired with a modern React + TypeScript frontend.
+
+- GitHub · [@AlanIsaacToroHolguin](https://github.com/AlanIsaacToroHolguin)
