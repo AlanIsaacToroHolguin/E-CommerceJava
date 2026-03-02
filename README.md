@@ -1,8 +1,21 @@
 # 🎸 Java Ecommerce — Electric Guitar Shop
 
-A full-stack e-commerce platform for selling **electric guitars online**, built as an end-to-end demonstration of **Java + OOP + Spring Boot 3** on the backend and **React + TypeScript** on the admin side.
+![Java](https://img.shields.io/badge/Java-21-orange?logo=openjdk&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.3-6DB33F?logo=springboot&logoColor=white)
+![Spring Security](https://img.shields.io/badge/Spring_Security-JWT-6DB33F?logo=springsecurity&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-336791?logo=postgresql&logoColor=white)
+![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
+![Tailwind](https://img.shields.io/badge/Tailwind-3-38B2AC?logo=tailwind-css&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-5-646CFF?logo=vite&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-The project covers the complete lifecycle of an online store: customer registration, JWT-protected authentication, a searchable guitar catalog, shopping cart, order management with a state machine, and a polished admin dashboard with sales charts.
+A full-stack e-commerce platform for selling **electric guitars online**, built as an end-to-end demonstration of **Java + OOP + Spring Boot 3** on the backend and **React + TypeScript** on the customer storefront and admin console.
+
+The project covers the complete lifecycle of an online store: customer registration, JWT-protected authentication, a searchable guitar catalog, shopping cart, order management with a state machine, a customer-facing storefront, and a polished admin dashboard with sales charts.
+
+> 🎬 **Quick demo:** see `docs/screenshots/00-demo.gif` for the end-to-end user flow.
 
 ---
 
@@ -230,25 +243,32 @@ The DataSeeder creates these on first startup:
 
 ## 📸 Screenshots
 
-> Add your screenshots to a `docs/screenshots/` folder and they will render below.
+### End-to-end demo
+![Demo](docs/screenshots/00-demo.gif)
 
-### Login
+### Login (Customer / Admin toggle)
 ![Login](docs/screenshots/01-login.png)
 
-### Admin Dashboard with sales chart
-![Dashboard](docs/screenshots/02-dashboard.png)
+### Storefront hero
+![Storefront](docs/screenshots/02-storefront.png)
 
-### Guitar catalog (admin)
-![Products](docs/screenshots/03-products.png)
+### Catalog grid
+![Catalog](docs/screenshots/03-catalog.png)
 
-### Create / Edit guitar modal
-![Product Modal](docs/screenshots/04-product-modal.png)
+### Product detail
+![Product detail](docs/screenshots/04-product-detail.png)
 
-### Order management with status transitions
-![Orders](docs/screenshots/05-orders.png)
+### Shopping cart
+![Cart](docs/screenshots/05-cart.png)
+
+### Admin dashboard with sales chart
+![Dashboard](docs/screenshots/06-admin-dashboard.png)
+
+### Admin product management
+![Products](docs/screenshots/07-admin-products.png)
 
 ### Swagger UI
-![Swagger](docs/screenshots/06-swagger.png)
+![Swagger](docs/screenshots/08-swagger.png)
 
 ---
 
